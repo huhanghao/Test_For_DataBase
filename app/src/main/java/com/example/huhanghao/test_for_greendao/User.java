@@ -24,13 +24,13 @@ public class User {
     private String name;//改变列名
 
     @NotNull
-    private int age;//不能为空
+    private String age;//不能为空
 
     @Transient
     private String hobby;//不存储到数据库
 
-    @Generated(hash = 1422233849)
-    public User(Long id, String identity, String name, int age) {
+    @Generated(hash = 1378302664)
+    public User(Long id, String identity, String name, @NotNull String age) {
         this.id = id;
         this.identity = identity;
         this.name = name;
@@ -65,12 +65,13 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return this.age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
+
 
 }

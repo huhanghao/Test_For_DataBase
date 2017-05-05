@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'checkstyle'
 
 android {
     compileSdkVersion 25
@@ -27,6 +28,26 @@ greendao {
     targetGenDir'src/main/java'                 //生成目录
 }
 
+// 配置格式选择
+checkstyle {
+    toolVersion '6.1.1'
+    showViolations true
+}
+
+
+checkstyle {
+    configFile rootProject.file('checkstyle.xml')
+    toolVersion '6.19'
+    ignoreFailures false
+    showViolations true
+}
+
+task('checkstyle', type: Checkstyle) {
+    source 'src/main/java'
+    include '**/*.java'
+    classpath = files()
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -36,4 +57,5 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile 'org.greenrobot:greendao:3.2.2'
+
 }

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.inst.greendao3_demo.dao.UserDao;
+
 import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.List;
@@ -23,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User mUser = new User((long) 2, "123412412412", "yuShu", 18);
-                DaoUtils.getInstance().openDateBase("user.db").insert(mUser);
+                User user = new User((long) 1, "11", "yuShu", "18");
+                DaoUtils.getInstance().openDateBase("user.db").insert(user);
             }
         });
 
@@ -38,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User mUser = new User((long) 2, "123412412412", "yuShu", 25);
-                DaoUtils.getInstance().openDateBase("user.db").update(mUser);
+                User user = new User((long) 2, "123412412412", "yuShu", "25");
+                DaoUtils.getInstance().openDateBase("user.db").update(user);
             }
         });
 
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DaoUtils.getInstance().openDateBase("user.db").loadAll();  //查询所有
-                QueryBuilder<User> qb =  DaoUtils.getInstance().openDateBase("user.db").queryBuilder();
+                QueryBuilder<User> qb = DaoUtils.getInstance().openDateBase("user.db").queryBuilder();
                 qb.where(UserDao.Properties.Id.eq(2)).orderAsc(UserDao.Properties.Age);
                 List<User> list = qb.list();
             }
