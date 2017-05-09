@@ -1,5 +1,6 @@
 package com.example.huhanghao.test_for_greendao;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         View btn2 = findViewById(R.id.tv_btn_del);
         View btn3 = findViewById(R.id.tv_btn_update);
         View btn4 = findViewById(R.id.tv_btn_search);
+        View btn5 = findViewById(R.id.tv_btn_realm);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
                 QueryBuilder<User> qb = DaoUtils.getInstance().openDateBase("user.db").queryBuilder();
                 qb.where(UserDao.Properties.Id.eq(2)).orderAsc(UserDao.Properties.Age);
                 List<User> list = qb.list();
+            }
+        });
+
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent = new Intent(MainActivity.this,TestForRealmAct.class);
+                startActivity(mIntent);
             }
         });
     }

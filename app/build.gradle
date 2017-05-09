@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'checkstyle'
 
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -24,8 +25,8 @@ android {
 //greendao配置
 greendao {
     schemaVersion 1                             //版本号，升级时可配置
-    daoPackage'com.inst.greendao3_demo.dao'     //包名
-    targetGenDir'src/main/java'                 //生成目录
+    daoPackage 'com.inst.greendao3_demo.dao'     //包名
+    targetGenDir 'src/main/java'                 //生成目录
 }
 
 // 配置格式选择
@@ -53,9 +54,11 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
     compile 'org.greenrobot:greendao:3.2.2'
-
+    compile 'io.realm:realm-android:0.87.0'
+    testCompile 'junit:junit:4.12'
 }

@@ -3,6 +3,11 @@ package com.example.huhanghao.test_for_greendao;
 import android.app.Application;
 import android.widget.Toast;
 
+import io.realm.DynamicRealm;
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.RealmMigration;
+
 /**
  * Created by root on 8/22/16.
  */
@@ -18,6 +23,7 @@ public class App extends Application {
         // FreelineCore.init(this);
 
         INSTANCE = this;
+        initRealm();
     }
 
     public static App getInstance() {
@@ -53,6 +59,25 @@ public class App extends Application {
         }
         mToast.setText(res);
         mToast.show();
+    }
+
+    /**
+     * 初始化real.
+     */
+    private void initRealm(){
+        RealmConfiguration configuration = new RealmConfiguration
+                .Builder(this)
+                .name(RealmUtils.DB_NAME)
+                .deleteRealmIfMigrationNeeded()
+                .schemaVersion(7).migration(new RealmMigration() {
+
+                    @Override
+                    public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {
+
+                    }
+                }).build();
+
+        Realm.setDefaultConfiguration(configuration);
     }
 
 }
