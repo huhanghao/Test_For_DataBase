@@ -3,6 +3,8 @@ package com.example.huhanghao.test_for_greendao;
 import android.app.Application;
 import android.widget.Toast;
 
+import com.example.huhanghao.test_for_greendao.realm.RealmUtils;
+
 import io.realm.DynamicRealm;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -65,8 +67,7 @@ public class App extends Application {
      * 初始化real.
      */
     private void initRealm(){
-        RealmConfiguration configuration = new RealmConfiguration
-                .Builder(this)
+        RealmConfiguration configuration = new RealmConfiguration.Builder()
                 .name(RealmUtils.DB_NAME)
                 .deleteRealmIfMigrationNeeded()
                 .schemaVersion(7).migration(new RealmMigration() {

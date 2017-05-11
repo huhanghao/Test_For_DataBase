@@ -1,4 +1,4 @@
-package com.example.huhanghao.test_for_greendao;
+package com.example.huhanghao.test_for_greendao.realm;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;

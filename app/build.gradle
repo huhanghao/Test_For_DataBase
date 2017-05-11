@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'checkstyle'
+apply plugin: 'realm-android'
 
 
 android {
@@ -59,6 +60,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'org.greenrobot:greendao:3.2.2'
-    compile 'io.realm:realm-android:0.87.0'
     testCompile 'junit:junit:4.12'
 }
